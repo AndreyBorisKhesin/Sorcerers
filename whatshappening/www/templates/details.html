@@ -1,0 +1,25 @@
+<ion-view view-title="Happening: {{ event.name }}">
+  <ion-content class="detail">
+    <div class="padding">
+      <h3>{{ event.name }}</h3>
+
+      <p>
+        Location: &nbsp {{ event.location }} <br>
+        Address: &nbsp {{ event.address }} <br>
+        Start time: &nbsp {{ event.start }} <br>
+        End time: &nbsp {{ event.end }} <br>
+      </p>
+    </div>
+
+    <div class="item item-body">
+      <p>{{ event.description }}</p>
+    </div>
+
+    <div class="padding">
+      <button class="button button-royal button-block"
+              ng-click="getDirections(event)">
+        Directions
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

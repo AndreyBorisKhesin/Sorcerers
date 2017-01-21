@@ -15,8 +15,15 @@ form {
   }
 }
 
-.centre {
-	width: 20px;
-	margin-left: auto;
-	margin-right: auto;
+.detail {
+  p {
+    font-size: 12px;
+    &.date {
+      font-family: $font-family-serif;
+      font-size: 13px;
+      font-style: italic;
+      line-height: 1.2;
+      color: $dark;
+    }
+  }
 }
