@@ -7,18 +7,15 @@
     </ion-refresher>
 
     <div class="list card"
-         ng-repeat="event in content.events">
+         ng-repeat="event in content.events"
+         ui-sref="details({id:event.id})">
 
       <div class="item">
         <h2> {{ event.name }}</h2>
         <p class="sub-title">
-          Where: {{ event.location }}, {{ event.address }} <br>
-          When: {{ event.start }} to {{ event.end }} <br>
+          {{ event.location }}, {{ event.address }} <br>
+          {{ event.start }} to {{ event.end }} <br>
         </p>
-      </div>
-
-      <div class="item item-body" >
-        <p>{{ event.description }}</p>
       </div>
 
     </div>

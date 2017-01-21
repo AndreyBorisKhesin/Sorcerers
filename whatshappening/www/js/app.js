@@ -38,7 +38,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
 
     .state('details', {
-      url: '/main/list/details',
+      url: '/main/list/:id',
       templateUrl: 'templates/details.html',
       controller: 'DetailsCtrl'
     })

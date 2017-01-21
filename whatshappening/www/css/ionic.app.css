@@ -9825,6 +9825,11 @@ form.ng-submitted label.has-error {
 form .form-errors {
   display: none; }
 
-.centre {
-  margin-left: auto;
-  margin-right: auto; }
+.detail p {
+  font-size: 12px; }
+  .detail p.date {
+    font-family: serif;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 1.2;
+    color: #444; }
