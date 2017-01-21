@@ -25,6 +25,10 @@
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
 
+    <!-- firebase & angularfire libraries -->
+    <script src="lib/firebase/firebase.js"></script>
+    <script src="lib/angular-fire/angularfire.min.js"></script>
+
   </head>
 
   <body ng-app="whatshappening">
@@ -35,6 +39,20 @@
     </ion-nav-bar>
 
     <ion-nav-view></ion-nav-view>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyB8rjbgSVKDR37fyGHfU6lmZ_gJZsnoOQA",
+      authDomain: "whatshappening-bcf1b.firebaseapp.com",
+      databaseURL: "https://whatshappening-bcf1b.firebaseio.com",
+      storageBucket: "whatshappening-bcf1b.appspot.com",
+      messagingSenderId: "972319133966"
+    };
+    firebase.initializeApp(config);
+    </script>
 
   </body>
 </html>
