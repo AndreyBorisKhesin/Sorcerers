@@ -1,2 +1,2 @@
-var app = angular.module('swetappdemo.services', []);
+var app = angular.module('whatshappening.services', []);
 

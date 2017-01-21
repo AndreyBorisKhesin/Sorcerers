@@ -2,8 +2,8 @@ var app = angular.module('whatshappening', [
   'ionic',
   'ngMap',
   'ngCordova',
-  'swetappdemo.controllers',
-  'swetappdemo.services'
+  'whatshappening.controllers',
+  'whatshappening.services'
 ]);
 
 app.run(function($ionicPlatform) {
