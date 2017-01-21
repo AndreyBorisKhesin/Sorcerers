@@ -7,18 +7,18 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-console": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-console"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-statusbar": {
         "source": {
             "type": "registry",
             "id": "cordova-plugin-statusbar@2.2.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-console": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-console"
         },
         "is_top_level": true,
         "variables": {}
@@ -61,22 +61,6 @@
             "id": "uk.co.workingedge.phonegap.plugin.launchnavigator"
         },
         "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-compat": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-compat"
-        },
-        "is_top_level": false,
-        "variables": {}
-    },
-    "cordova-plugin-actionsheet": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-actionsheet"
-        },
-        "is_top_level": false,
         "variables": {}
     }
 }
