@@ -69,17 +69,25 @@ app.controller('EventCtrl', function ($scope) {
       console.log(form.start);
       console.log(form.end);
 
+      var eventName = document.getElementById("eventName").value;
+      var venue = document.getElementById("venue").value;
+      var eventAddress = document.getElementById("eventAddress").value;
+      var description = document.getElementById("description").value;
+      var startTime = document.getElementById("startTime").value;
+      var endTime = document.getElementById("endTime").value;
+      var password = document.getElementById("password").value;
+
       var ref = firebase.database().ref();
       var listRef = ref.child("events");
       listRef.set({
         3: {
-          name: "apple pie baking party",
-          location: "Athletic Centre",
-          address: "55 Harbord St., Toronto",
-          description: "Play some badminton",
-          start: "1914-12-20 08:30:45",
-          end: "1914-12-20 08:40:35",
-          password: "meow"
+          name: eventName,
+          location: venue,
+          address: eventAddress,
+          description: description,
+          start: startTime,
+          end: endTime,
+          password: password
         }
       });
 
