@@ -32,25 +32,19 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
 
     .state('list', {
-      url: '/list',
+      url: '/main/list',
       templateUrl: 'templates/list.html',
       controller: 'ListCtrl'
     })
 
     .state('details', {
-      url: '/details',
+      url: '/main/list/details',
       templateUrl: 'templates/details.html',
       controller: 'DetailsCtrl'
     })
 
-    .state('map', {
-      url: '/map',
-      templateUrl: 'templates/map.html',
-      controller: 'MapCtrl'
-    })
-
     .state('event', {
-      url: '/event',
+      url: '/main/event',
       templateUrl: 'templates/event.html',
       controller: 'EventCtrl'
     })

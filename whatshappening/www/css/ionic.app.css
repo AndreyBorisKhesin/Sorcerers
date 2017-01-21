@@ -9818,3 +9818,9 @@ a.button {
 /*
 Custom css here.
 */
+/* Form styling */
+form.ng-submitted label.has-error {
+  border-bottom: 2px solid #ef473a; }
+
+form .form-errors {
+  display: none; }
