@@ -9,7 +9,8 @@
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.name.$invalid}">
           <span class="input-label">Event name</span>
-          <input type="text"
+          <input id="eventName"
+                  type="text"
                  placeholder="Event name"
                  name="name"
                  ng-model="formData.name"
@@ -19,7 +20,8 @@
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.location.$invalid}">
           <span class="input-label">Event location</span>
-          <input type="text"
+          <input id="venue"
+                  type="text"
                  placeholder="Event location"
                  name="location"
                  ng-model="formData.location"
@@ -29,7 +31,8 @@
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.address.$invalid}">
           <span class="input-label">Event address</span>
-          <input type="text"
+          <input id="eventAddress"
+                type="text"
                  placeholder="Event address"
                  name="address"
                  ng-model="formData.address"
@@ -39,7 +42,8 @@
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.description.$invalid}">
           <span class="input-label">Event description</span>
-          <input type="text"
+          <input id="description"
+                type="text"
                  placeholder="Event description"
                  name="description"
                  ng-model="formData.description"
@@ -49,7 +53,8 @@
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.start.$invalid}">
           <span class="input-label">Start time</span>
-          <input type="datetime-local"
+          <input id="startTime"
+                type="datetime-local"
                  placeholder="Start time"
                  name="start"
                  ng-model="formData.start"
@@ -59,7 +64,8 @@
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.end.$invalid}">
           <span class="input-label">End time</span>
-          <input type="datetime-local"
+          <input id="endTime"
+                type="datetime-local"
                  placeholder="End time"
                  name="end"
                  ng-model="formData.end"
@@ -69,7 +75,8 @@
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.password.$invalid}">
           <span class="input-label">Password (for event deletion)</span>
-          <input type="password"
+          <input id="password"
+                type="password"
                  placeholder="Password (for event deletion)"
                  name="password"
                  ng-model="formData.password"
@@ -78,11 +85,26 @@
 
       </ion-list>
 
-      <button class="button button-royal button-block"
-              type="submit">Create Event
+      <button id="submitBtn" onclick="submitClick()" class="button button-royal button-block"
+      type="submit">Create Event
       </button>
 
     </form>
 
+  <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyB8rjbgSVKDR37fyGHfU6lmZ_gJZsnoOQA",
+        authDomain: "whatshappening-bcf1b.firebaseapp.com",
+        databaseURL: "https://whatshappening-bcf1b.firebaseio.com",
+        storageBucket: "whatshappening-bcf1b.appspot.com",
+        messagingSenderId: "972319133966"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <script src="/Users/Chrsitine/Desktop/Sorcerers/Sorcerers/whatshappening/www/js/event.js"></script>
+
   </ion-content>
 </ion-view>
+
