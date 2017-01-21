@@ -68,6 +68,21 @@ app.controller('EventCtrl', function ($scope) {
       // TODO: call Firebase add event function
       console.log(form.start);
       console.log(form.end);
+
+      var ref = firebase.database().ref();
+      var listRef = ref.child("events");
+      listRef.set({
+        3: {
+          name: "apple pie baking party",
+          location: "Athletic Centre",
+          address: "55 Harbord St., Toronto",
+          description: "Play some badminton",
+          start: "1914-12-20 08:30:45",
+          end: "1914-12-20 08:40:35",
+          password: "meow"
+        }
+      });
+
     } else {
       console.log("Invalid form");
     }
