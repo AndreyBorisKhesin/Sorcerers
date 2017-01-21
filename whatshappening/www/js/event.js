@@ -1,24 +1,21 @@
-// Create an event
-var name = document.getElementById("name");
-var venue = document.getElementById("venue");
-var address = document.getElementById("address");
-var city = document.getElementById("city");
-var province = document.getElementById("province");
-var postalCode = document.getElementById("postalCode");
-var description = document.getElementById("description");
-// TODO: might have to separate elements for time
-var startTime = document.getElementById("startTime");
-var endTime = document.getElementById("endTime");
-var price = document.getElementById("price");
-
-var ageRestriction = document.getElementById("ageRestriction");
-var password = document.getElementById("password");
-// TODO: where to verify password retype?
-
-var submitBtn = document.getElementById("submitBtn");
-
 function submitClick() {
 
-  window.alert("HI");
+  var eventName = document.getElementById("eventName").value;
+  var venue = document.getElementById("venue").value;
+  var eventAddress = document.getElementById("eventAddress").value;
+  var description = document.getElementById("description").value;
+  var startTime = document.getElementById("startTime").value;
+  var endTime = document.getElementById("endTime").value;
+  var password = document.getElementById("password").value;
 
+  var firebaseRef = firebase.database().ref();
+  window.alert(eventName+"MWAHAHAHAHA"); // for checking
+  firebaseRef.child("child").set("text");
+}
+
+function readClick() {
+  var firebaseRef = firebase.database().ref();
+  firebase.database().ref("users").on("value", function(snapshot) {
+    window.alert(snapshot.val());
+  });
 }

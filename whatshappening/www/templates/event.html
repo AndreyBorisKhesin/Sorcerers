@@ -8,9 +8,10 @@
 
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.name.$invalid}">
-          <span class="input-label">Happening Name</span>
-          <input type="text"
-                 placeholder="Happening Name"
+          <span class="input-label">Event name</span>
+          <input id="eventName"
+                  type="text"
+                 placeholder="Event name"
                  name="name"
                  ng-model="formData.name"
                  ng-required="true">
@@ -18,9 +19,10 @@
 
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.location.$invalid}">
-          <span class="input-label">Happening Location</span>
-          <input type="text"
-                 placeholder="Happening Location"
+          <span class="input-label">Event location</span>
+          <input id="venue"
+                  type="text"
+                 placeholder="Event location"
                  name="location"
                  ng-model="formData.location"
                  ng-required="true">
@@ -28,9 +30,10 @@
 
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.address.$invalid}">
-          <span class="input-label">Happening Address</span>
-          <input type="text"
-                 placeholder="Happening Address"
+          <span class="input-label">Event address</span>
+          <input id="eventAddress"
+                type="text"
+                 placeholder="Event address"
                  name="address"
                  ng-model="formData.address"
                  ng-required="true">
@@ -38,9 +41,10 @@
 
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.description.$invalid}">
-          <span class="input-label">Happening Description</span>
-          <input type="text"
-                 placeholder="Happening Description"
+          <span class="input-label">Event description</span>
+          <input id="description"
+                type="text"
+                 placeholder="Event description"
                  name="description"
                  ng-model="formData.description"
                  ng-required="true">
@@ -48,9 +52,10 @@
 
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.start.$invalid}">
-          <span class="input-label">Happening Start</span>
-          <input type="datetime-local"
-                 placeholder="Happening Start"
+          <span class="input-label">Start time</span>
+          <input id="startTime"
+                type="datetime-local"
+                 placeholder="Start time"
                  name="start"
                  ng-model="formData.start"
                  ng-required="true">
@@ -58,9 +63,10 @@
 
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.end.$invalid}">
-          <span class="input-label">Happening End</span>
-          <input type="datetime-local"
-                 placeholder="Happening End"
+          <span class="input-label">End time</span>
+          <input id="endTime"
+                type="datetime-local"
+                 placeholder="End time"
                  name="end"
                  ng-model="formData.end"
                  ng-required="true">
@@ -68,9 +74,10 @@
 
         <label class="item item-input item-floating-label"
                ng-class="{'has-error':eventForm.password.$invalid}">
-          <span class="input-label">Password (to edit Happening)</span>
-          <input type="password"
-                 placeholder="Password (to edit Happening)"
+          <span class="input-label">Password (for event deletion)</span>
+          <input id="password"
+                type="password"
+                 placeholder="Password (for event deletion)"
                  name="password"
                  ng-model="formData.password"
                  ng-required="true">
@@ -78,12 +85,25 @@
 
       </ion-list>
 
-      <button class="button button-royal button-block"
-              type="submit">
-	      Create Happening
+      <button id="submitBtn" onclick="submitClick()" class="button button-royal button-block"
+      type="submit">Create Event
       </button>
 
     </form>
+
+  <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyB8rjbgSVKDR37fyGHfU6lmZ_gJZsnoOQA",
+        authDomain: "whatshappening-bcf1b.firebaseapp.com",
+        databaseURL: "https://whatshappening-bcf1b.firebaseio.com",
+        storageBucket: "whatshappening-bcf1b.appspot.com",
+        messagingSenderId: "972319133966"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <script src="/Users/Chrsitine/Desktop/Sorcerers/Sorcerers/whatshappening/www/js/event.js"></script>
 
   </ion-content>
 </ion-view>
