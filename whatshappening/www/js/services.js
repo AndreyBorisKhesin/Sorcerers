@@ -44,13 +44,24 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
         })
     });
     self.events = [];
+
+    // Array to be sorted.
+    var temp_array = [];
+
     firebase.database().ref("events").on("value", function(snapshot) {
           snapshot.forEach(function(childSnapshot) {
             var entry = childSnapshot.val();
             entry.id = childSnapshot.key;
-            self.events.push(entry);
-      });
-	});
+            temp_array.push(entry);
+        });
+    });
+
+    // sort temp_array
+
+    for (i = 0; i < temp_array.length; i++) {
+      self.events[i] = temp_array[i];
+    }
+
     defer.resolve(self.events);
 
     return defer.promise;
