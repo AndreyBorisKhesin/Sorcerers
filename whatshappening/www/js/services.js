@@ -60,7 +60,6 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
 			var lat2 = temp_array[j].lat;
 			var lon2 = temp_array[j].lon;
 
-			/*
 			var R = 6371e3; // metres
 			var p1 = (Math.PI / 180) * (lat1);
 			var p2 = (Math.PI / 180) * (lat2);
@@ -73,10 +72,8 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
 			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
 			var d = 0.72 * R * c;
-			*/
 			
-			var d = 1000000000-1;
-			var dt = self.getTravel(lat1, lon1, lat2, lon2)[0];
+			var dt = 18 * d / 25 //self.getTravel(lat1, lon1, lat2, lon2)[0];
 
 			var timeUntil = self.getDiff(temp_array[j].start);
 			var timeUntilOver = self.getDiff(temp_array[j].end);
@@ -134,6 +131,25 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
   };
 
 	self.getTravel = function (lat1, lon1, lat2, lon2) {
+		var origin = new google.maps.LatLng(lat1, lon1);
+		var destination = new google.maps.LatLng(lat2, lon2);
+
+		var directionsService = new google.maps.DirectionsService();
+		var request = {
+			origin: origin, // LatLng|string
+			destination: destination, // LatLng|string
+			travelMode: google.maps.DirectionsTravelMode.WALKING
+		};
+		console.log(lat1);
+
+		directionsService.route(request, function(response, status) {
+		if (status === "OK") {
+			var point = response.routes[0].legs[0];
+			return [point.duration.text, point.distance.text];
+		}});
+	}
+
+	self.getTravel1 = function (lat1, lon1, lat2, lon2) {
 /*		var directions = new GDirections();
 		var wp = new Array();
 		wp[0] = new GLatLng(lat1, lon1);
