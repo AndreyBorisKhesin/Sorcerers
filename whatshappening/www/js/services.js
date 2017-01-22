@@ -18,7 +18,6 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
   };
 
   self.loadEvents = function () {
-    // TODO: Firebase extract array of events
 
     self.isLoading = true;
     var defer = $q.defer();
@@ -42,7 +41,7 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
     firebase.database().ref("events").on("value", function(snapshot) {
           snapshot.forEach(function(childSnapshot) {
             var entry = childSnapshot.val();
-            //Add the key
+            // Add the key
             entry.id = childSnapshot.key;
             temp_array.push(entry);
         });
@@ -115,6 +114,8 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
     });
     return defer.promise;
   };
+
+//  self.delete = function ()
 
   return self;
 });
