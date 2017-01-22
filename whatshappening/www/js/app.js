@@ -1,7 +1,7 @@
 var app = angular.module('whatshappening', [
   'ionic',
-  'ngMap',
   'ngCordova',
+  'ngMap',
   'whatshappening.controllers',
   'whatshappening.services'
 ]);

@@ -457,9 +457,6 @@ app.controller('EventCtrl', function ($scope, ListService) {
   $scope.create = function (form) {
     console.log("EventCtrl create event called");
     if (form.$valid) {
-      // TODO: call Firebase add event function
-      console.log(form.start);
-      console.log(form.end);
 
       var eventName = document.getElementById("eventName").value;
       var venue = document.getElementById("venue").value;
@@ -471,8 +468,6 @@ app.controller('EventCtrl', function ($scope, ListService) {
       var password_encrypted = hex_md5(password);
 
       $scope.content.getCoordinates(eventAddress).then(function(data) {
-        console.log(data[0]);
-        console.log(data[1]);
         var ref = firebase.database().ref("events");
         var msg = ref.push();
         msg.set({
