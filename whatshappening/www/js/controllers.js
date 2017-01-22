@@ -35,7 +35,7 @@ app.controller('ListCtrl', function ($scope, $ionicLoading, ListService) {
 });
 
 
-app.controller('DetailsCtrl', function ($scope, $stateParams, ListService, NgMap) {
+app.controller('DetailsCtrl', function ($scope, $stateParams, $ionicPopup, ListService, NgMap) {
 
   NgMap.getMap().then(function (map) {
     $scope.map = map;
@@ -45,6 +45,14 @@ app.controller('DetailsCtrl', function ($scope, $stateParams, ListService, NgMap
   console.log("Loading DetailsCtrl");
   $scope.eventID = $stateParams.id;
   $scope.event = ListService.getEvent($scope.eventID);
+
+  // $scope.delete = function(event) {
+  //   $ionicPopup.prompt({
+  //     title: 'Enter deletion password',
+  //     inputType: 'password',
+  //     inputPlaceholder: 'Your password'
+  //   })
+  // };
 
   // $scope.getDirections = function (address) {
   //   var source = [ListService.lat, ListService.lon];
