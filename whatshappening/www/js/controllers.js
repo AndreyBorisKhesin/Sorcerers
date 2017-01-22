@@ -76,7 +76,6 @@ app.controller('EventCtrl', function ($scope) {
       var startTime = document.getElementById("startTime").value;
       var endTime = document.getElementById("endTime").value;
       var password = document.getElementById("password").value;
-      var hash = eventName+venue+eventAddress+description+startTime+endTime+password;
       var ref = firebase.database().ref("events");
       var msg = ref.push();
       msg.set({
