@@ -9840,3 +9840,6 @@ form .form-errors {
 .title {
   font-size: 26pt;
   font-family: "Gill Sans Extrabold", Helvetica, sans-serif; }
+
+.input-label {
+  color: black; }
