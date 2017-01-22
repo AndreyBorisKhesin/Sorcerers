@@ -8,13 +8,13 @@ Ever been out on a Friday night, unable to find the most lit parties to attend? 
 
 ## What it does
 
-**What's Happening?** is a web solution for discovering the latest nearby *Happenings*. Never be feel left out again with **What's Happening?**!
+**What's Happening?** is a mobile and web solution for discovering the latest nearby *Happenings*. Never be feel left out again with **What's Happening?**!
 
 ## Features
 
 - Users upload their *Happenings* to **What's Happening?**.
-- Other users search for *Happenings* near them, filtering by various categories, such as price, duration, and more!
-- **What's Happening?** provides directions, allowing the user to easily go to a nearby *Happening* and have a great time!
+- Other users search for *Happenings* near them, sorted by proximity in both space and time!
+- **What's Happening?** provides Google maps of the locations, allowing the user to easily go to a nearby *Happening* and have a great time!
 
 ## How it works
 
