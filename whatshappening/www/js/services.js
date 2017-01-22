@@ -71,9 +71,11 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
        			 	Math.sin(dl/2) * Math.sin(dl/2);
 			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-			var d = 0.72 * R * c;
-			
-			var dt = 18 * d / 25 //self.getTravel(lat1, lon1, lat2, lon2)[0];
+			var d = R * c;
+
+			temp_array[j].d = d;
+
+			var dt = 18 * d / 25; //self.getTravel(lat1, lon1, lat2, lon2)[0];
 
 			var timeUntil = self.getDiff(temp_array[j].start);
 			var timeUntilOver = self.getDiff(temp_array[j].end);

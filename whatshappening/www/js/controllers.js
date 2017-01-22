@@ -10,6 +10,7 @@ app.controller('ListCtrl', function ($scope, $ionicLoading, ListService) {
   console.log("Loading ListCtrl");
   $ionicLoading.show({template:'Loading feed...'});
   $scope.content = ListService;
+  $scope.Math = Math;
 
   $scope.doRefresh = function() {
     if (!$scope.content.isLoading) {

@@ -17,7 +17,9 @@
         <p class="sub-title">
           &nbsp <i class="ion-ios-location"></i> &nbsp{{ event.location }}, {{ event.address }} <br>
           &nbsp <i class="ion-ios-clock"></i> {{ event.start }} to {{ event.end }} <br>
+          &nbsp <i class="ion-map"></i> {{ Math.round(event.d / 100.0 ) / 10.0 }} km
         </p>
+
       </div>
 
     </div>
