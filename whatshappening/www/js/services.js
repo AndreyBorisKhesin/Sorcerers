@@ -46,15 +46,13 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
           });
         })
     });
-
-    // Temp code for testing
-    var event1 = {id: 1, name:"badminton", location:"Athletic Centre", address:"55 Harbord St., Toronto",
-      description:"Play some badminton", start:"1914-12-20 08:30:45", end:"1914-12-20 08:40:35",
-      password:"meow"};
-    var event2 = {id: 2, name:"chess", location:"Hart House", address:"7 Hart House Cir., Toronto",
-      description:"Play some chess", start:"1916-12-20 08:30:45", end:"1916-12-20 08:40:35",
-      password:"meow"};
-    self.events.push(event1, event2);
+  // Search through the database of events and push every Happening
+  // to self.events.
+  firebase.database().ref("events").on("value", function(snapshot) {
+    		snapshot.forEach(function(childSnapshot) {
+    			self.events.push(childSnapshot.val());
+		});
+	});
     defer.resolve(self.events);
 
     return defer.promise;
