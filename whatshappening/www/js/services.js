@@ -37,10 +37,10 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
 
           console.error("Error getting position");
           console.error(err);
-          $ionicPopup.alert({
-            'title':'Switch on geolocation.',
-            'template': 'It seems like you have switched off geolocation.'
-          });
+          // $ionicPopup.alert({
+          //   'title':'Switch on geolocation.',
+          //   'template': 'It seems like you have switched off geolocation.'
+          // });
         })
     });
 
