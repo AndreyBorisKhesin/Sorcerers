@@ -89,7 +89,5 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
     return defer.promise;
   };
 
-//  self.delete = function ()
-
   return self;
 });
