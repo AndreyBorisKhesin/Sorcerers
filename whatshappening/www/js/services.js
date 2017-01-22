@@ -115,5 +115,10 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
     return defer.promise;
   };
 
+  self.getDiff = function (time) {
+    var diff = Date.parse(time) - (new Date().getTime() / 1000);
+    return diff;
+  }
+
   return self;
 });
