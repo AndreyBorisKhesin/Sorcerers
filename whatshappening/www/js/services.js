@@ -67,5 +67,17 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
     return null;
   };
 
+  self.getCoordinates = function (string_lit, callback) {
+    console.log("coords called");
+    var coordinates;
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: string_lit }, function (results, status) {
+      coord_obj = results[0].geometry.location;
+      console.log("coords reached");
+      coordinates = [coord_obj.lat(), coord_obj.lng()];
+      callback(coordinates);
+    });
+  };
+
   return self;
 });

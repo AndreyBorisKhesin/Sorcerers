@@ -2,13 +2,13 @@ var app = angular.module('whatshappening.controllers', []);
 
 
 app.controller('MainCtrl', function ($scope) {
-	console.log(firebase.database().ref("events").orderByChild("startTime").limitToFirst(25));
-	firebase.database().ref("events").on("value", function(snapshot) {
-		snapshot.forEach(function(childSnapshot) {
-			var childData = childSnapshot.val();
-			console.log(childData);
-		});
-	});
+	// console.log(firebase.database().ref("events").orderByChild("startTime").limitToFirst(25));
+	// firebase.database().ref("events").on("value", function(snapshot) {
+	// 	snapshot.forEach(function(childSnapshot) {
+	// 		var childData = childSnapshot.val();
+	// 		console.log(childData);
+	// 	});
+	// });
 	console.log("App initialized");
 });
 
@@ -16,8 +16,13 @@ app.controller('MainCtrl', function ($scope) {
 app.controller('ListCtrl', function ($scope, $ionicLoading, ListService) {
   console.log("Loading ListCtrl");
   $ionicLoading.show({template:'Loading feed...'});
-
   $scope.content = ListService;
+
+  // $scope.content.getCoordinates("7 Hart House Cir., Toronto", function (coordinates) {
+  //   console.log(coordinates[0]);
+  //   console.log(coordinates[1]);
+  // });
+
   $scope.doRefresh = function() {
     if (!$scope.content.isLoading) {
       $scope.content.refresh().then(function() {
