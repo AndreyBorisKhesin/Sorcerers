@@ -1,43 +1,31 @@
-# What's Happening?
+<p align="center">
+<img src="https://github.com/AndreyBorisKhesin/Sorcerers/blob/master/whatshappening/what.png" width="70%">
+</p>  
+
+# WhatsHappening
 
 *What’s Happening?*
 
 ## The Problem
 
-Ever been out on a Friday night, unable to find the most lit parties to attend? Or perhaps just trying to find something fun to do for the weekend? **What's Happening?** is designed to resolve problems like these by providing users with a platform to view the most hip *Happenings* in their vicinity.
+Ever been out on a Friday night, unable to find the most lit parties to attend? Or perhaps  just trying to find something fun to do for the weekend? WhatsHappening is designed to resolve problems like these by providing users with a platform to view the most hip happenings in their vicinity.
 
 ## What it does
 
-**What's Happening?** is a mobile and web solution for discovering the latest nearby *Happenings*. Never be feel left out again with **What's Happening?**!
+**WhatsHappening** is a web solution for discovering the latest nearby happenings. Never be left feeling left out again with WhatsHappening!
 
 ## Features
 
-- Users upload their *Happenings* to **What's Happening?**.
-- Other users search for *Happenings* near them, sorted by proximity in both space and time!
-- **What's Happening?** provides Google maps of the locations, allowing the user to easily go to a nearby *Happening* and have a great time!
+- Users upload their events to WhatsHappening
+- Other users search for Happenings near them, filtering by various categories, such as price, duration, and more!
+- WhatsHappening provides directions, allowing the user to go, and have a great time.
 
 ## How it works
 
-The back-end of **What's Happening?** is supported by the *Firebase* platform. Each *Happening* is given a unique hash, then stored under a single node in the *Firebase* system. Users hosting *Happenings* upload key information about the *Happening*, such as the name, a description, an address, and more.
+The backend of WhatsHappening is supported by the Firebase platform. Each event (happening) is given a unique hash, then stored under a single node in the firebase system. Users hosting Happenings upload key information about the Happening, such as the name, a description, address, and more.
 
-The UI is created with HTML, and CSS, with functionality implemented with JavaScript. *Ionic* is used in conjunction with *Cordova* in order to port the project in order to permit mobile support.
+The UI is created with HTML and CSS, with functionality implemented with JavaScript. Ionic is used in conjunction with Cordova in order to port the project in order to permit Android support.
 
-## How to run
+## Our Wishlist
 
-**What's Happening?** requires the installation of an up-to-date version of *Ionic* in order to be run. To install *Ionic* and *Cordova*, the user should execute the following:
-```
-npm install -g ionic cordova
-```
-To install a local clone of the project, the user should execute the following:
-```
-git clone https://github.com/AndreyBorisKhesin/Sorcerers.git
-```
-Once the repository is cloned, the user should navigate to the directory where the project is located, then, in command line, run the following:
-
-```
-ionic serve
-```
-
-Upon running this, **What's Happening?** will be opened in the default web browser.
-
-Happy Happening!
+A functional database.
