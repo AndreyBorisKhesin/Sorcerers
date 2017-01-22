@@ -462,8 +462,8 @@ app.controller('EventCtrl', function ($scope, ListService) {
       var venue = document.getElementById("venue").value;
       var eventAddress = document.getElementById("eventAddress").value;
       var description = document.getElementById("description").value;
-      var startTime = document.getElementById("startTime").value;
-      var endTime = document.getElementById("endTime").value;
+      var startTime = document.getElementById("startTime").value.replace("T", ", ");
+      var endTime = document.getElementById("endTime").value.replace("T", ", ");
       var password = document.getElementById("password").value;
       var password_encrypted = hex_md5(password);
 
