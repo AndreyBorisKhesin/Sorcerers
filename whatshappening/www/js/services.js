@@ -37,6 +37,7 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
 
     // Array to be sorted.
     var temp_array = [];
+    var consider = [];
 
     firebase.database().ref("events").on("value", function(snapshot) {
           snapshot.forEach(function(childSnapshot) {
@@ -44,49 +45,66 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
             // Add the key
             entry.id = childSnapshot.key;
             temp_array.push(entry);
+	    consider.push(true);
         });
     });
 
 	var lat1 = self.lat;
 	var lon1 = self.lon;
-	console.log(""+lat1+"        "+lon1+Math.PI);
 
 	for (i = 0; i < temp_array.length; i++) {
+
 		min_d = 1000000000;
 		min = -1;
 		for (j = i; j < temp_array.length; j++) {
-			var lat2 = 0;
-			var lon2 = 0;
+			var lat2 = temp_array[j].lat;
+			var lon2 = temp_array[j].lon;
 
-			lat2 = temp_array[j].lat;
-			lon2 = temp_array[j].lon;
-			console.log(temp_array.length+"         "+lat2+"         "+lon2);
-
+			/*
 			var R = 6371e3; // metres
-			var p1 = (Math.PI / 180.0) * (lat1);
-			var p2 = (Math.PI / 180.0) * (lat2);
-			var dp = (Math.PI / 180.0) * (lat2-lat1);
-			var dl = (Math.PI / 180.0) * (lon2-lon1);
+			var p1 = (Math.PI / 180) * (lat1);
+			var p2 = (Math.PI / 180) * (lat2);
+			var dp = (Math.PI / 180) * (lat2-lat1);
+			var dl = (Math.PI / 180) * (lon2-lon1);
 
 			var a = Math.sin(dp/2) * Math.sin(dp/2) +
 			        Math.cos(p1) * Math.cos(p2) *
        			 	Math.sin(dl/2) * Math.sin(dl/2);
 			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 
-			var d = R * c;
+			var d = 0.72 * R * c;
+			*/
+			
+			var d = 1000000000-1;
+			var dt = self.getTravel(lat1, lon1, lat2, lon2)[0];
+
+			var timeUntil = self.getDiff(temp_array[j].start);
+			var timeUntilOver = self.getDiff(temp_array[j].end);
+			if (dt > timeUntilOver) {
+				consider[j] = false;
+			} else if (dt < timeUntil) {
+				d = timeUntil;
+			} else {
+				d = 2 * dt - timeUntil;
+			}
 			if (d < min_d) {
 				min_d = d;
 				min = j;
 			}
 		}
-		var temp = temp_array[i];
+		var temp1 = temp_array[i];
+		var temp2 = consider[i];
 		temp_array[i] = temp_array[min];
-		temp_array[min] = temp;
+		consider[i] = consider[min];
+		temp_array[min] = temp1;
+		consider[min] = temp2;
 	}
 
-    for (i = 0; i < temp_array.length; i++) {
-      self.events[i] = temp_array[i];
-    }
+	for (i = 0; i < temp_array.length; i++) {
+		if (consider[i]) {
+			self.events.push(temp_array[i]);
+		}
+	}
 
     defer.resolve(self.events);
 
@@ -115,10 +133,22 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
     return defer.promise;
   };
 
+	self.getTravel = function (lat1, lon1, lat2, lon2) {
+/*		var directions = new GDirections();
+		var wp = new Array();
+		wp[0] = new GLatLng(lat1, lon1);
+		wp[1] = new GLatLng(lat2, lon2);
+		directions.loadFromWaypoints(wp);
+		GEvent.addListener(directions, "load", function() {
+			return [directions.getDuration().seconds,
+				directions.getDistance().metres / 1000];
+		});*/return [6,8];
+	};
+
   self.getDiff = function (time) {
-    var diff = Date.parse(time) - (new Date().getTime() / 1000);
+    var diff = (Date.parse(time) - new Date().getTime()) / 1000;
     return diff;
-  }
+  };
 
   return self;
 });
