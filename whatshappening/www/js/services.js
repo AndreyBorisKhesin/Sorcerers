@@ -43,6 +43,8 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
           });
         })
     });
+
+    // Make sure that the events are cleared before we generate them
     self.events = [];
 
     // Array to be sorted.
@@ -51,6 +53,7 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
     firebase.database().ref("events").on("value", function(snapshot) {
           snapshot.forEach(function(childSnapshot) {
             var entry = childSnapshot.val();
+            //Add the key
             entry.id = childSnapshot.key;
             temp_array.push(entry);
         });
