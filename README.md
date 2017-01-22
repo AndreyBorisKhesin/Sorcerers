@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/AndreyBorisKhesin/Sorcerers/blob/master/whatshappening/what.png" width="40%">
+<img src="https://github.com/AndreyBorisKhesin/Sorcerers/blob/master/whatshappening/what.png" width="25%">
 </p>  
 
 # WhatsHappening
