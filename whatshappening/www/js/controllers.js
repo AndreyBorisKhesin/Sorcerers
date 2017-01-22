@@ -11,11 +11,6 @@ app.controller('ListCtrl', function ($scope, $ionicLoading, ListService) {
   $ionicLoading.show({template:'Loading feed...'});
   $scope.content = ListService;
 
-  // $scope.content.getCoordinates("7 Hart House Cir., Toronto", function (coordinates) {
-  //   console.log(coordinates[0]);
-  //   console.log(coordinates[1]);
-  // });
-
   $scope.doRefresh = function() {
     if (!$scope.content.isLoading) {
       $scope.content.refresh().then(function() {
@@ -46,21 +41,20 @@ app.controller('DetailsCtrl', function ($scope, $stateParams, $ionicPopup, ListS
   $scope.eventID = $stateParams.id;
   $scope.event = ListService.getEvent($scope.eventID);
 
-  // $scope.delete = function(event) {
-  //   $ionicPopup.prompt({
-  //     title: 'Enter deletion password',
-  //     inputType: 'password',
-  //     inputPlaceholder: 'Your password'
-  //   })
-  // };
-
-  // $scope.getDirections = function (address) {
-  //   var source = [ListService.lat, ListService.lon];
-  //   var destination = ListService.getCoordinates(address).then(function (data) {
-  //     // data is array of destination. [0] is lat, [1] is lon.
-  //   });
-  //
-  // };
+  $scope.delete = function(event) {
+    $ionicPopup.prompt({
+      title: 'Enter deletion password',
+      inputType: 'password',
+      inputPlaceholder: 'Your password'
+    }).then(function(res) {
+      if (hex_md5(res) == event.password) {
+        var ref = firebase.database().ref("events");
+        ref.child(event.id).remove();
+        window.history.go(-1);
+        ListService.refresh();
+      }
+    });
+  };
 });
 
 
@@ -492,6 +486,7 @@ app.controller('EventCtrl', function ($scope, ListService) {
           lat: data[0],
           lon: data[1]
         });
+        window.history.go(-1);
       });
     } else {
       console.log("Invalid form");

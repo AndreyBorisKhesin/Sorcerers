@@ -46,9 +46,9 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
             temp_array.push(entry);
         });
     });
-	
-	var lat1 = 43.6596654//self.lat;
-	var lon1 = -79.3967752//self.lon;
+
+	var lat1 = self.lat;
+	var lon1 = self.lon;
 	console.log(""+lat1+"        "+lon1+Math.PI);
 
 	for (i = 0; i < temp_array.length; i++) {
@@ -67,12 +67,12 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
 			var p2 = (Math.PI / 180.0) * (lat2);
 			var dp = (Math.PI / 180.0) * (lat2-lat1);
 			var dl = (Math.PI / 180.0) * (lon2-lon1);
-			
+
 			var a = Math.sin(dp/2) * Math.sin(dp/2) +
 			        Math.cos(p1) * Math.cos(p2) *
        			 	Math.sin(dl/2) * Math.sin(dl/2);
 			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-		
+
 			var d = R * c;
 			if (d < min_d) {
 				min_d = d;
