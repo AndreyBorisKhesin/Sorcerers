@@ -35,21 +35,24 @@ app.controller('ListCtrl', function ($scope, $ionicLoading, ListService) {
 });
 
 
-app.controller('DetailsCtrl', function ($scope, $stateParams, ListService) {
+app.controller('DetailsCtrl', function ($scope, $stateParams, ListService, NgMap) {
+
+  NgMap.getMap().then(function (map) {
+    $scope.map = map;
+  });
+
+  $scope.content = ListService;
   console.log("Loading DetailsCtrl");
   $scope.eventID = $stateParams.id;
   $scope.event = ListService.getEvent($scope.eventID);
 
-  $scope.getDirections = function (address) {
-    var source = [ListService.lat, ListService.lon];
-    var destination = ListService.getCoordinates(address).then(function (data) {
-      // data is array of destination. [0] is lat, [1] is lon.
-    });
-
-
-    // launchnavigator.navigate(address);
-
-  };
+  // $scope.getDirections = function (address) {
+  //   var source = [ListService.lat, ListService.lon];
+  //   var destination = ListService.getCoordinates(address).then(function (data) {
+  //     // data is array of destination. [0] is lat, [1] is lon.
+  //   });
+  //
+  // };
 });
 
 
@@ -437,7 +440,8 @@ function bit_rol(num, cnt)
 // end of hash function
 
 
-app.controller('EventCtrl', function ($scope) {
+app.controller('EventCtrl', function ($scope, ListService) {
+  $scope.content = ListService;
   $scope.formData = {
     "name": "",
     "location": "",
@@ -464,17 +468,23 @@ app.controller('EventCtrl', function ($scope) {
       var password = document.getElementById("password").value;
       var password_encrypted = hex_md5(password);
 
-      var ref = firebase.database().ref("events");
-      var msg = ref.push();
-      msg.set({
+      $scope.content.getCoordinates(eventAddress).then(function(data) {
+        console.log(data[0]);
+        console.log(data[1]);
+        var ref = firebase.database().ref("events");
+        var msg = ref.push();
+        msg.set({
           name: eventName,
           location: venue,
           address: eventAddress,
           description: description,
           start: startTime,
           end: endTime,
-          password: password_encrypted
-	});
+          password: password_encrypted,
+          lat: data[0],
+          lon: data[1]
+        });
+      });
     } else {
       console.log("Invalid form");
     }

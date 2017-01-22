@@ -16,10 +16,9 @@
     </div>
 
     <div class="padding">
-      <button class="button button-royal button-block"
-              ng-click="getDirections(event.address)">
-        Directions
-      </button>
+      <map center="{{ content.lat }}, {{ content.lon }}"
+           zoom="14">
+      </map>
     </div>
   </ion-content>
 </ion-view>

@@ -57,6 +57,8 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
         });
     });
 
+
+
     for (i = 0; i < temp_array.length; i++) {
       self.events[i] = temp_array[i];
     }
