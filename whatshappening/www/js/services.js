@@ -6,7 +6,6 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
     'events': [],
     'page': 1,
     'isLoading': false,
-    'hasMore': true,
     'lat': 0,
     'lon': 0
   };
@@ -15,7 +14,6 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
     self.events = [];
     self.page = 1;
     self.isLoading = false;
-    self.hasMore = true;
     return self.loadEvents();
   };
 
