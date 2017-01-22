@@ -24,10 +24,20 @@ The UI is created with HTML, and CSS, with functionality implemented with JavaSc
 
 ## How to run
 
-**What's Happening?** requires the installation of an up-to-date version of *Ionic* in order to be run. Once the repository is cloned, the user should navigate to the directory where the project is located, then, in command line, run the following:
+**What's Happening?** requires the installation of an up-to-date version of *Ionic* in order to be run. To install *Ionic* and *Cordova*, the user should execute the following:
+```
+npm install -g ionic cordova
+```
+To install a local clone of the project, the user should execute the following:
+```
+git clone https://github.com/AndreyBorisKhesin/Sorcerers.git
+```
+Once the repository is cloned, the user should navigate to the directory where the project is located, then, in command line, run the following:
 
 ```
 ionic serve
 ```
 
 Upon running this, **What's Happening?** will be opened in the default web browser.
+
+Happy Happening!
