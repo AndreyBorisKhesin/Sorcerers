@@ -16,8 +16,13 @@
     </div>
 
     <div class="padding">
-      <map center="{{ content.lat }}, {{ content.lon }}"
+      <map center="{{ event.lat }}, {{ event.lon }}"
            zoom="14">
+
+        <marker position="{{ [event.lat, event.lon] }}">
+
+        </marker>
+
       </map>
     </div>
 
