@@ -75,11 +75,11 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
 			var d = 0.72 * R * c;
 			*/
 			
-			var d = 1000000000;
+			var d = 1000000000-1;
 			var dt = self.getTravel(lat1, lon1, lat2, lon2)[0];
 
-			var timeUntil = self.getDiff(temp_array[j].startTime);
-			var timeUntilOver = self.getDiff(temp_array[j].endTime);
+			var timeUntil = self.getDiff(temp_array[j].start);
+			var timeUntilOver = self.getDiff(temp_array[j].end);
 			if (dt > timeUntilOver) {
 				consider[j] = false;
 			} else if (dt < timeUntil) {
@@ -134,7 +134,7 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
   };
 
 	self.getTravel = function (lat1, lon1, lat2, lon2) {
-		var directions = new GDirections();
+/*		var directions = new GDirections();
 		var wp = new Array();
 		wp[0] = new GLatLng(lat1, lon1);
 		wp[1] = new GLatLng(lat2, lon2);
@@ -142,13 +142,13 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
 		GEvent.addListener(directions, "load", function() {
 			return [directions.getDuration().seconds,
 				directions.getDistance().metres / 1000];
-		});
-	}
+		});*/return [6,8];
+	};
 
   self.getDiff = function (time) {
-    var diff = Date.parse(time) - (new Date().getTime() / 1000);
+    var diff = (Date.parse(time) - new Date().getTime()) / 1000;
     return diff;
-  }
+  };
 
   return self;
 });
