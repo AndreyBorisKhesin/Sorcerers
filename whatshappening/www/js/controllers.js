@@ -49,14 +49,7 @@ app.controller('DetailsCtrl', function ($scope, $stateParams, ListService) {
   $scope.event = ListService.getEvent($scope.eventID);
 
   $scope.getDirections = function (event) {
-    // var geocoder = new google.maps.Geocoder();
-    //
-    // var event_lat = 0;
-    // var event_lon = 0;
-    //
-    // var destination = [event_lat, event_lon];
-    // var source = [ListService.lat, ListService.lon];
-
+    // TODO: finish
     launchnavigator.navigate(event.address);
 
   };

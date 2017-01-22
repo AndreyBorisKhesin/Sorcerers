@@ -3,10 +3,7 @@ var app = angular.module('whatshappening.services', []);
 app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
 
   var self = {
-    // List of events extracted by Firebase
-    'events': [
-      // Temp list of events for testing purposes
-    ],
+    'events': [],
     'page': 1,
     'isLoading': false,
     'hasMore': true,
@@ -47,10 +44,10 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
         })
     });
     self.events = [];
-	firebase.database().ref("events").on("value", function(snapshot) {
-    		snapshot.forEach(function(childSnapshot) {
-    			self.events.push(childSnapshot.val());
-		});
+    firebase.database().ref("events").on("value", function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+            self.events.push(childSnapshot.val());
+      });
 	});
     defer.resolve(self.events);
 
