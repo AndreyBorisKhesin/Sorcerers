@@ -31,8 +31,3 @@ ionic serve
 ```
 
 Upon running this, WhatsHappening will be opened in the default web browser.
-
-
-## Our Wishlist
-
-A functional database.
