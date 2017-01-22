@@ -8,14 +8,19 @@ Ever been out on a Friday night, unable to find the most lit parties to attend? 
 
 ## What it does
 
-**WhatsHappening** is a web solution for discovering the latest nearby happenings. Never be left feeling left out again with WhatsHappening! 
-
+**WhatsHappening** is a web solution for discovering the latest nearby happenings. Never be left feeling left out again with WhatsHappening!
 
 ## Features
 
 - Users upload their events to WhatsHappening
 - Other users search for Happenings near them, filtering by various categories, such as price, duration, and more!
-- WhatsHappening provides directions, allowing the user to go, and have a great time. 
+- WhatsHappening provides directions, allowing the user to go, and have a great time.
+
+## How it works
+
+The backend of WhatsHappening is supported by the Firebase platform. Each event (happening) is given a unique hash, then stored under a single node in the firebase system. Users hosting Happenings upload key information about the Happening, such as the name, a description, address, and more.
+
+The UI is created with HTML and CSS, with functionality implemented with JavaScript. Ionic is used in conjunction with Cordova in order to port the project in order to permit Android support.
 
 ## Our Wishlist
 
