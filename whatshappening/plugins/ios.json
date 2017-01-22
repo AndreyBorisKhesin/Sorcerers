@@ -1,0 +1,44 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "com.ionicframework.whatshappening715501"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.ionicframework.whatshappening715501"
+        },
+        "cordova-plugin-geolocation": {
+            "GEOLOCATION_USAGE_DESCRIPTION": " ",
+            "PACKAGE_NAME": "com.ionicframework.whatshappening715501"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.ionicframework.whatshappening715501"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "com.ionicframework.whatshappening715501"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.whatshappening715501"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.whatshappening715501"
+        },
+        "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+            "PACKAGE_NAME": "com.ionicframework.whatshappening715501"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-actionsheet": {
+            "PACKAGE_NAME": "com.ionicframework.whatshappening715501"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.ionicframework.whatshappening715501"
+        }
+    }
+}
