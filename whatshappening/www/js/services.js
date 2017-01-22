@@ -46,7 +46,9 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
     self.events = [];
     firebase.database().ref("events").on("value", function(snapshot) {
           snapshot.forEach(function(childSnapshot) {
-            self.events.push(childSnapshot.val());
+            var entry = childSnapshot.val();
+            entry.id = childSnapshot.key;
+            self.events.push(entry);
       });
 	});
     defer.resolve(self.events);
