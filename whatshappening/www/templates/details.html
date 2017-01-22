@@ -1,19 +1,32 @@
-<ion-view view-title="Happening: {{ event.name }}">
+@import "../../scss/ionic.app.scss";
+
+<ion-view view-title="Happening: {{ event.name }}" class="masters">
   <ion-content class="detail">
     <div class="padding">
-      <h3>{{ event.name }}</h3>
+      <h2>{{ event.name }}</h2>
 
-      <p>
-        Location: &nbsp {{ event.location }} <br>
-        Address: &nbsp {{ event.address }} <br>
-        Start time: &nbsp {{ event.start }} <br>
-        End time: &nbsp {{ event.end }} <br>
-      </p>
+      <table class="table">
+        <tr align="left">
+          <th><b>Location &nbsp<b></th>
+          <th>{{ event.location }}</th>
+        </tr>
+        <tr align="left">
+          <td><b>Address &nbsp<b></td>
+          <td>{{ event.address }}</td>
+        </tr>
+        <tr align="left">
+          <td><b>Start time &nbsp<b></td>
+          <td>{{ event.start }}</td>
+        </tr>
+        <tr align="left">
+          <td><b>End time &nbsp<b></td>
+          <td>{{ event.end }}</td>
+        </tr>
+        <tr>
+          <td>{{ event.description }}</td>
+      </table>
     </div>
 
-    <div class="item item-body">
-      <p>{{ event.description }}</p>
-    </div>
 
     <div class="padding">
       <map center="{{ event.lat }}, {{ event.lon }}"
