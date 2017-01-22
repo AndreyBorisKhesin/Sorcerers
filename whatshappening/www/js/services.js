@@ -43,10 +43,13 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
           });
         })
     });
+    //Make sure that the events are cleared before we generate them
     self.events = [];
+    //Load all the events from the database
     firebase.database().ref("events").on("value", function(snapshot) {
           snapshot.forEach(function(childSnapshot) {
             var entry = childSnapshot.val();
+            //Add the key
             entry.id = childSnapshot.key;
             self.events.push(entry);
       });
