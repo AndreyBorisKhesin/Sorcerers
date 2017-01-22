@@ -76,11 +76,10 @@ app.controller('EventCtrl', function ($scope) {
       var startTime = document.getElementById("startTime").value;
       var endTime = document.getElementById("endTime").value;
       var password = document.getElementById("password").value;
-
-      var ref = firebase.database().ref();
-      var listRef = ref.child("events");
-      listRef.set({
-        3: {
+      var hash = eventName+venue+eventAddress+description+startTime+endTime+password;
+      var ref = firebase.database().ref("events");
+      var msg = ref.push();
+      msg.set({
           name: eventName,
           location: venue,
           address: eventAddress,
@@ -88,9 +87,7 @@ app.controller('EventCtrl', function ($scope) {
           start: startTime,
           end: endTime,
           password: password
-        }
-      });
-
+	});
     } else {
       console.log("Invalid form");
     }
