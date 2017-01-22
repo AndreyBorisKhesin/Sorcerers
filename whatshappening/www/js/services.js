@@ -30,15 +30,6 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
 
           self.lat = position.coords.latitude;
           self.lon = position.coords.longitude;
-
-        }, function (err) {
-
-          console.error("Error getting position");
-          console.error(err);
-          // $ionicPopup.alert({
-          //   'title':'Switch on geolocation.',
-          //   'template': 'It seems like you have switched off geolocation.'
-          // });
         })
     });
 
@@ -56,8 +47,43 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
             temp_array.push(entry);
         });
     });
+	
+	var lat1 = 43.6596654//self.lat;
+	var lon1 = -79.3967752//self.lon;
+	console.log(""+lat1+"        "+lon1+Math.PI);
 
+	for (i = 0; i < temp_array.length; i++) {
+		min_d = 1000000000;
+		min = -1;
+		for (j = i; j < temp_array.length; j++) {
+			var lat2 = 0;
+			var lon2 = 0;
 
+			lat2 = temp_array[j].lat;
+			lon2 = temp_array[j].lon;
+			console.log(temp_array.length+"         "+lat2+"         "+lon2);
+
+			var R = 6371e3; // metres
+			var p1 = (Math.PI / 180.0) * (lat1);
+			var p2 = (Math.PI / 180.0) * (lat2);
+			var dp = (Math.PI / 180.0) * (lat2-lat1);
+			var dl = (Math.PI / 180.0) * (lon2-lon1);
+			
+			var a = Math.sin(dp/2) * Math.sin(dp/2) +
+			        Math.cos(p1) * Math.cos(p2) *
+       			 	Math.sin(dl/2) * Math.sin(dl/2);
+			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		
+			var d = R * c;
+			if (d < min_d) {
+				min_d = d;
+				min = j;
+			}
+		}
+		var temp = temp_array[i];
+		temp_array[i] = temp_array[min];
+		temp_array[min] = temp;
+	}
 
     for (i = 0; i < temp_array.length; i++) {
       self.events[i] = temp_array[i];
