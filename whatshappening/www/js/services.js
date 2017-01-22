@@ -46,6 +46,7 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
           });
         })
     });
+    self.events = [];
 	firebase.database().ref("events").on("value", function(snapshot) {
     		snapshot.forEach(function(childSnapshot) {
     			self.events.push(childSnapshot.val());
