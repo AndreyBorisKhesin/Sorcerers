@@ -3,7 +3,7 @@
 		<style>
 
       .round-button {
-	      width:25%;
+	      width: 180pt;
 	      margin: auto;
       }
       .round-button-circle:hover {
@@ -17,10 +17,9 @@
 	      border:10px solid #cfdcec;
         overflow:hidden;
 
-        background: #4679BD;
+        background: #0000A3;
         box-shadow: 0 0 3px gray;
       }
-
     .round-button a {
         display:block;
 	      float:left;
@@ -33,29 +32,37 @@
 	    text-align:center;
 	    color:#e2eaf3;
       font-family:Verdana;
-      font-size:2.3em;
+      font-size:2.5vw;;
       font-weight:bold;
       text-decoration:none;
     }
-
 
 			.centre {
 				width: 80%;
 				margin-left: auto;
 				margin-right: auto;
 			}
+
+			.container {
+      position: relative;
+      padding-top: 2em;
+      margin-top: 70px;
+      }
 		</style>
+
 	<head>
 	<ion-content>
-		<div class="centre">
-			<button class="button button-block button-large" ui-sref="event">
-				Create a Happening
-			</button>
-		</div>
+	  <div class="container"></div>
 		<div class="round-button">
 		  <div class="round-button-circle">
 		    <a ui-sref="list">WHAT'S HAPPENING?</a>
 		  </div>
+		</div>
+		<div class="container"></div>
+		<div class="centre">
+			<button class="button button-block button-large" ui-sref="event">
+				Create a Happening
+			</button>
 		</div>
 	</ion-content>
 </ion-view>
