@@ -2,7 +2,14 @@ var app = angular.module('whatshappening.controllers', []);
 
 
 app.controller('MainCtrl', function ($scope) {
-  console.log("App initialized");
+	console.log(firebase.database().ref("events").orderByChild("startTime").limitToFirst(25));
+	firebase.database().ref("events").on("value", function(snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			var childData = childSnapshot.val();
+			console.log(childData);
+		});
+	});
+	console.log("App initialized");
 });
 
 
