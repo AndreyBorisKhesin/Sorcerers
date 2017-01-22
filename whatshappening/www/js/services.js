@@ -3,10 +3,7 @@ var app = angular.module('whatshappening.services', []);
 app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
 
   var self = {
-    // List of events extracted by Firebase
-    'events': [
-      // Temp list of events for testing purposes
-    ],
+    'events': [],
     'page': 1,
     'isLoading': false,
     'hasMore': true,
@@ -46,12 +43,16 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
           });
         })
     });
-  // Search through the database of events and push every Happening
-  // to self.events.
-  firebase.database().ref("events").on("value", function(snapshot) {
-    		snapshot.forEach(function(childSnapshot) {
-    			self.events.push(childSnapshot.val());
-		});
+    //Make sure that the events are cleared before we generate them
+    self.events = [];
+    //Load all the events from the database
+    firebase.database().ref("events").on("value", function(snapshot) {
+          snapshot.forEach(function(childSnapshot) {
+            var entry = childSnapshot.val();
+            //Add the key
+            entry.id = childSnapshot.key;
+            self.events.push(entry);
+      });
 	});
     defer.resolve(self.events);
 
@@ -66,6 +67,18 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
       }
     }
     return null;
+  };
+
+  self.getCoordinates = function (string_lit, callback) {
+    console.log("coords called");
+    var coordinates;
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ address: string_lit }, function (results, status) {
+      coord_obj = results[0].geometry.location;
+      console.log("coords reached");
+      coordinates = [coord_obj.lat(), coord_obj.lng()];
+      callback(coordinates);
+    });
   };
 
   return self;

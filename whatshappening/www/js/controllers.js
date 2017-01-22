@@ -2,13 +2,13 @@ var app = angular.module('whatshappening.controllers', []);
 
 
 app.controller('MainCtrl', function ($scope) {
-	console.log(firebase.database().ref("events").orderByChild("startTime").limitToFirst(25));
-	firebase.database().ref("events").on("value", function(snapshot) {
-		snapshot.forEach(function(childSnapshot) {
-			var childData = childSnapshot.val();
-			console.log(childData);
-		});
-	});
+	// console.log(firebase.database().ref("events").orderByChild("startTime").limitToFirst(25));
+	// firebase.database().ref("events").on("value", function(snapshot) {
+	// 	snapshot.forEach(function(childSnapshot) {
+	// 		var childData = childSnapshot.val();
+	// 		console.log(childData);
+	// 	});
+	// });
 	console.log("App initialized");
 });
 
@@ -16,8 +16,13 @@ app.controller('MainCtrl', function ($scope) {
 app.controller('ListCtrl', function ($scope, $ionicLoading, ListService) {
   console.log("Loading ListCtrl");
   $ionicLoading.show({template:'Loading feed...'});
-
   $scope.content = ListService;
+
+  // $scope.content.getCoordinates("7 Hart House Cir., Toronto", function (coordinates) {
+  //   console.log(coordinates[0]);
+  //   console.log(coordinates[1]);
+  // });
+
   $scope.doRefresh = function() {
     if (!$scope.content.isLoading) {
       $scope.content.refresh().then(function() {
@@ -44,14 +49,7 @@ app.controller('DetailsCtrl', function ($scope, $stateParams, ListService) {
   $scope.event = ListService.getEvent($scope.eventID);
 
   $scope.getDirections = function (event) {
-    // var geocoder = new google.maps.Geocoder();
-    //
-    // var event_lat = 0;
-    // var event_lon = 0;
-    //
-    // var destination = [event_lat, event_lon];
-    // var source = [ListService.lat, ListService.lon];
-
+    // TODO: finish
     launchnavigator.navigate(event.address);
 
   };
