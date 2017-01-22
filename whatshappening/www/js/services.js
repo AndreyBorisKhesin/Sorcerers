@@ -57,8 +57,6 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
         });
     });
 
-    // sort temp_array
-
     for (i = 0; i < temp_array.length; i++) {
       self.events[i] = temp_array[i];
     }
@@ -78,16 +76,16 @@ app.factory('ListService', function ($q, $cordovaGeolocation, $ionicPopup) {
     return null;
   };
 
-  self.getCoordinates = function (string_lit, callback) {
-    console.log("coords called");
+  self.getCoordinates = function (string_lit) {
+    var defer = $q.defer();
     var coordinates;
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: string_lit }, function (results, status) {
       coord_obj = results[0].geometry.location;
-      console.log("coords reached");
       coordinates = [coord_obj.lat(), coord_obj.lng()];
-      callback(coordinates);
+      defer.resolve(coordinates);
     });
+    return defer.promise;
   };
 
   return self;

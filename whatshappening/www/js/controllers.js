@@ -37,13 +37,17 @@ app.controller('ListCtrl', function ($scope, $ionicLoading, ListService) {
 
 app.controller('DetailsCtrl', function ($scope, $stateParams, ListService) {
   console.log("Loading DetailsCtrl");
-  console.log($stateParams);
   $scope.eventID = $stateParams.id;
   $scope.event = ListService.getEvent($scope.eventID);
 
-  $scope.getDirections = function (event) {
-    // TODO: finish
-    launchnavigator.navigate(event.address);
+  $scope.getDirections = function (address) {
+    var source = [ListService.lat, ListService.lon];
+    var destination = ListService.getCoordinates(address).then(function (data) {
+      // data is array of destination. [0] is lat, [1] is lon.
+    });
+
+
+    // launchnavigator.navigate(address);
 
   };
 });
